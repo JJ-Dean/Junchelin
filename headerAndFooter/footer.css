@@ -1,0 +1,10 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    height: 10rem
+}
+
+footer > span {
+    margin-top: auto;
+}

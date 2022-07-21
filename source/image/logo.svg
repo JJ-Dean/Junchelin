@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#F3B340;stroke-width:20;stroke-miterlimit:10;}
+	.st1{fill:#F3B340;stroke:#F3B340;stroke-width:20;stroke-miterlimit:10;}
+	.st2{fill:#FF8C00;stroke:#F9A01B;stroke-miterlimit:10;}
+	.st3{display:none;}
+	.st4{display:inline;fill:none;stroke:#2B00FF;stroke-miterlimit:10;}
+	.st5{fill:#FF0000;stroke:#ED1C24;stroke-width:30;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1">
+	<g>
+		<path class="st0" d="M-1142.82,271.91c-26.3-26.3-26.47-68.75-0.4-94.82"/>
+		<path class="st0" d="M-1142.82,271.91c26.3,26.3,26.37,44.61,0.3,70.69"/>
+	</g>
+	<g>
+		<path class="st0" d="M-974.02,168.64c-33.47-33.47-33.69-87.5-0.5-120.69"/>
+		<path class="st0" d="M-974.02,168.64c33.47,33.47,33.69,87.5,0.5,120.69"/>
+	</g>
+	<g>
+		<path class="st0" d="M-789.59,265.09c-26.06-26.06-26.23-68.12-0.39-93.96"/>
+		<path class="st0" d="M-789.59,265.09c25.24,26.85,7.24,61.15-18.6,86.99"/>
+	</g>
+	<polygon class="st1" points="-1241.62,497 -692.62,497 -792.12,619 -1142.12,619 	"/>
+	<text transform="matrix(1.0934 0 0 1 -1148.0707 787.3848)" style="font-family:'Gulim'; font-size:159.5673px;">열 기</text>
+</g>
+<g id="Layer_2">
+	<path class="st0" d="M-1037.07,501.05c0-45.19,33.11-81.82,73.95-81.82c40.84,0,73.95,36.63,73.95,81.82"/>
+	<path class="st0" d="M-1108.35,486.44c0-78.12,63.23-141.44,141.23-141.44s141.23,63.33,141.23,141.44"/>
+</g>
+<g id="Layer_3">
+</g>
+<g id="Layer_4">
+	<g>
+	</g>
+	<path class="st2" d="M866.53,650.64l-125.2,155.9c-3.76,4.68-9.43,7.4-15.44,7.4H274.87c-6,0-11.68-2.72-15.44-7.4l-125.2-155.9
+		c-10.41-12.96-1.18-32.19,15.44-32.19h701.42C867.71,618.44,876.93,637.68,866.53,650.64z"/>
+	<g>
+		<path class="st2" d="M735.63,618.44H579.46c0-43.56-35.47-79-79.08-79s-79.08,35.44-79.08,79H265.13
+			c0-129.79,105.33-235,235.25-235S735.63,488.65,735.63,618.44z"/>
+	</g>
+	<g class="st3">
+		<ellipse class="st4" cx="500.38" cy="618.44" rx="235.25" ry="235"/>
+		<ellipse class="st4" cx="500.38" cy="618.44" rx="79.08" ry="79"/>
+	</g>
+	<g>
+		<g>
+			<path class="st5" d="M500,227.99c-21.3-21.3-21.45-55.69-0.32-76.82"/>
+			<path class="st5" d="M500,227.99c21.3,21.3,21.45,55.69,0.32,76.82"/>
+		</g>
+		<g>
+			<path class="st5" d="M299.5,300.99c-21.3-21.3-21.45-55.69-0.32-76.82"/>
+			<path class="st5" d="M299.5,300.99c21.3,21.3,21.45,55.69,0.32,76.82"/>
+		</g>
+		<g>
+			<path class="st5" d="M700.5,299.99c-21.3-21.3-21.45-55.69-0.32-76.82"/>
+			<path class="st5" d="M700.5,299.99c21.3,21.3,21.45,55.69,0.32,76.82"/>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,109 @@
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+header {
+    position: sticky;
+    background-color: beige;
+    color: white;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    display:  flex;
+    align-items: center;
+    height: 8rem;
+    top: 0;
+    z-index: 9999;
+}
+
+.logo {
+    width: 11rem;
+    height: 10rem;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_left {
+   left: 10rem;
+   margin-left: 5rem;
+}
+
+.nav_right {
+    right: 10rem;
+    margin-right: 10rem;
+}
+
+header nav ul { 
+    text-align: center;
+}
+
+header nav ul li {
+    padding: 0 1rem;
+    width: 10rem;
+}
+
+header nav ul li a { 
+    position: relative;
+    display: inline-block;
+    line-height: 5rem;
+    font: 500 2rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+header nav ul li.active a {
+    color:var(--baseColor);
+}
+
+header nav ul li.active a:after {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: .2rem;
+    background-color: var(--baseColor);
+    left: 0;
+    bottom:0;
+}
+
+header nav ul li.active a,
+header nav ul li:hover a {
+    color: var(--baseColor);
+}
+
+header nav ul li.active a:after,
+header nav ul li:hover a:after {
+    content:"";
+    position:absolute;
+    width:100%;
+    height:2px;
+    background-color:var(--baseColor);
+    left:0;
+    bottom:0;
+}
+
+header nav ul li a:after {
+    opacity:0;
+    content:"";
+    position:absolute;
+    display:block;
+    width:100%;
+    height:2px;
+    background-color:var(--baseColor);
+    left:auto;
+    bottom:0;
+    transition:all 0.3s ease-in-out;
+}
+
+header nav ul li.active a:after,
+header nav ul li:hover a:after {
+    opacity:1;
+}
+

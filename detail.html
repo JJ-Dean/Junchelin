@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+    <link rel="stylesheet" href="source/detail/detail.css">
+    <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./headerAndFooter/header.css">
+    <link rel="stylesheet" href="./headerAndFooter/footer.css">
+</head>
+<body>  <!--include-html="./hf/header.html" -->
+    <header>
+        <h1 class="logo">
+            <a href="#">
+                <img src="./source/image/logo.svg" alt="Logo">
+            </a>
+        </h1>
+        <nav>
+            <ul class="nav_left">
+                <li><a href="#">찜 목록</a></li>
+                <li><a href="#">내 리뷰</a></li>
+            </ul>
+            <ul class="nav_right">
+                <li><a href="#">Sign in</a></li>
+                <li style="font-size: 3rem;">|</li>
+                <li><a href="#">Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section>
+        <h1 id="restaurantDetail">음식점 정보</h1>
+        <div class="retaurantDetailWarp">
+            <div class="imgWrap">
+                <img src="./source/image/foodex2.jpg">
+            </div>
+            <div class="restaurantInfo">
+                <div class="retaurantName">
+                    <span>이름 : </span> <span>준재포차</span>
+                </div>
+                <div class="retaurantLocation">
+                    <span>위치 : </span> <span>강남구 ~~~~</span>
+                </div>
+                <div class="retaurantHottest">
+                    <span>가장 뜨거운 리뷰 온도 : </span> <span>80℃</span>
+                </div>
+                <div class="goReveiw">
+                    <button>리뷰 쓰러 가기</button>
+                </div>
+            </div>
+            <div class="wishBtn">
+                <button>찜하기</button>
+            </div>
+        </div>
+    </section>
+    <br><hr><br>
+
+    <section>
+        <div id="categoryWrap">
+            <div class="category">
+                <div class="categoryName">
+                    <span>리뷰</span>
+                </div>
+                <div class="sortWrap">
+                    <div class="sort">
+                        <select class="sortControl">
+                            <option value="recent">최신순</option>
+                            <option value="old">오래된 순</option>
+                            <option value="Hot">뜨거운 순</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+    <section>
+        <div id="reviewWrap">
+            <div class="cardWrap">
+                <div class="card">
+                    <div class="reviewProfile">
+                        <span>닉네임</span>
+                        <span>리뷰 온도</span><span>50℃</span>
+                    </div>
+                    <div class="review">
+                        <div class="reviewTxt">
+                            <span class="txt"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cardWrap">
+                <div class="card">
+                    <div class="reviewProfile">
+                        <span>닉네임</span>
+                        <span>리뷰 온도</span><span>50℃</span>
+                    </div>
+                    <div class="review">
+                        <div class="reviewTxt">
+                            <span class="txt"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cardWrap">
+                <div class="card">
+                    <div class="reviewProfile">
+                        <span>닉네임</span>
+                        <span>리뷰 온도</span><span>50℃</span>
+                    </div>
+                    <div class="review">
+                        <div class="reviewTxt">
+                            <span class="txt"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+                
+    <footer>
+        footer
+        <span>contact : yjj052800@gmail.com</span>
+    </footer>
+    <script src="./source/main/banner/banner.js"></script>
+</body>
+</html>

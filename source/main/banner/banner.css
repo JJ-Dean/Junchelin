@@ -1,0 +1,56 @@
+.swiper {
+  background-color: lightgray;
+  height : 42rem;
+}
+
+.swiper-slide {
+  text-align: center;
+}
+
+.swiper-slide>img:nth-child(2) {
+  position: absolute;
+  left: 20rem;
+  top: calc(50% - 10rem);
+}
+
+.swiper-button-prev.sbp1,
+.swiper-button-next.sbn1 {
+  top: calc(50% - 6.2rem);
+  height: 12.4rem;
+  width: 30rem;
+
+}
+
+.swiper-button-prev.sbp1:after,
+.swiper-button-next.sbn1:after {
+  display: block;
+  line-height: 0;
+  color: #f49014;
+}
+
+.swiper-button-next.sbp1 {
+  right: 10rem;
+}
+
+.swiper-pagination.sp1 {
+  position: relative;
+  bottom: 5rem;
+  left: calc(100% - 30rem);
+  border-radius: 2rem;
+  width: 10.3rem;
+  height: 4rem;
+  background: #fff;
+  font: 400 2rem/4rem 'Noto Sans KR', sans-serif;
+  text-align: left;
+  text-indent: 3rem;
+}
+
+.swiper-pagination.stop:after {
+  background-position: -24.5rem -22rem;
+
+}
+
+.swiper-pagination-total {
+  color: #ccc;
+}
+
