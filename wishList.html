@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
-    <link rel="stylesheet" href="./source/main/main.css">
+    <title>wishList</title>
+    <link rel="stylesheet" href="./source/wishList/detail.css">
+    <link rel="stylesheet" href="./source/wishList/main.css">
     <link rel="stylesheet" href="./source/reset.css">
     <link rel="stylesheet" href="./headerAndFooter/header.css">
     <link rel="stylesheet" href="./headerAndFooter/footer.css">
-    <link rel="stylesheet" href="./source/main/banner/banner.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </head>
-<body>  <!--include-html="./hf/header.html" -->
+<body>
     <header>
         <h1 class="logo">
             <a href="#">
@@ -22,8 +20,7 @@
         </h1>
         <nav>
             <ul class="nav_left">
-                <li><a href="#">찜 목록</a></li>
-                <li><a href="#">내 리뷰</a></li>
+                <li><a href="#">홈으로</a></li>
             </ul>
             <ul class="nav_right">
                 <li><a href="#">Sign in</a></li>
@@ -32,48 +29,59 @@
             </ul>
         </nav>
     </header>
+    
     <section>
-        <div class="swiper swiper1" id="swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide"><a href="#"><img src="./source/image/kfood.jpg" alt="한식"></a></div>
-                <div class="swiper-slide"><a href="#"><img src="./source/image/jfood.jpg" alt="일식"></a></div>
-                <div class="swiper-slide"><a href="#"><img src="./source/image/wfood.jpg" alt="양식"></a></div>
+        <h1 id="restaurantDetail">최근에 찜한 음식점</h1>
+        <div class="retaurantDetailWarp">
+            <div class="imgWrapp">
+                <img src="./source/image/foodex2.jpg">
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination sp1"></div>
-
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev sbp1"></div>
-            <div class="swiper-button-next sbn1"></div>
+            <div class="restaurantInfo">
+                <div class="retaurantName">
+                    <span>이름 : </span> <span>준재포차</span>
+                </div>
+                <div class="retaurantLocation">
+                    <span>위치 : </span> <span>강남구 ~~~~</span>
+                </div>
+                <div class="retaurantHottest">
+                    <span>가장 뜨거운 리뷰 온도 : </span> <span>80℃</span>
+                </div>
+                <div class="goReveiw">
+                    <button>리뷰 쓰러 가기</button>
+                </div>
+            </div>
+            <div class="wishBtn">
+                <button>찜하기</button>
+            </div>
         </div>
     </section>
     <br><hr><br>
-
+    
+    <div class="wishRevButton">
+        <a href="#">찜 목록</a>
+        <a href="myReview.html">내 리뷰</a>
+    </div>
     <section>
         <div id="categoryWrap">
             <div class="category">
                 <div class="categoryName">
-                    <span>종류</span>
+                    <span>찜 리스트</span>
                 </div>
-                <div class="categoryDetail">
-                    <input type="radio" name="한식" value="한식"> <label for="한식"><span class="cateTxt">한식</span></label>
-                </div>
-                <div class="categoryDetail">
-                    <input type="radio" name="일식" value="일식"> <label for="일식"><span class="cateTxt">일식</span></label>
-                </div>
-                <div class="categoryDetail">
-                    <input type="radio" name="양식" value="양식"> <label for="양식"><span class="cateTxt">양식</span></label>
-                </div>
-                <div class="categoryDetail">
-                    <input type="radio" name="중식" value="중식"> <label for="중식"><span class="cateTxt">중식</span></label>
+                <div class="sortWrap">
+                    <div class="sort">
+                        <select class="sortControl">
+                            <option value="recent">최신순</option>
+                            <option value="old">오래된 순</option>
+                            <option value="Hot">뜨거운 순</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+
     <section>
         <div id="cardWrap">
             <div class="card">
@@ -151,6 +159,5 @@
         footer
         <span>contact : yjj052800@gmail.com</span>
     </footer>
-    <script src="./source/main/banner/banner.js"></script>
 </body>
 </html>

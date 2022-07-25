@@ -1,22 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-
-
-</head>
-<body>
-	<div id="map" style="width: 500px; height: 400px;"></div>
-	<button type="button" class="btn btn-lg btn-primary" id="getMyPositionBtn">내 위치 가져오기</button>
-	<h1 id="review">리뷰 쓰기가 가능한지 표시되는 곳 입니다.</h1>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77107e0134f771816a433ef8bd460a7f"></script>
-		
-	<script>
 		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 		var options = { //지도를 생성할 때 필요한 기본 옵션
 			center : new kakao.maps.LatLng(37.350983570324395, 127.11128557300214), //지도의 중심좌표.
@@ -158,14 +140,15 @@ function displayMarker(locPosition, message) {
     var distance = polyline.getLength();
     console.log("음식점과 나의 위치의 거리는 ="+distance+"m");
     
-    //거리가 500m 이하일 때만 리뷰를 쓸 수 있게합니다.
+	//음식점과의 거리 표시
+    document.getElementById('revMeter').innerHTML=`${Math.floor(distance)}m`;
+    
+    //500m 안에 있는지 확인 문구
     if (distance <= 500) {
     	document.getElementById("review").innerText = "지금 리뷰를 쓰시면 뜨거운 등급을 받으실 수 있습니다!!";
     }else {
     	document.getElementById("review").innerText = "음식점과 멀어졌습니다. 음식점 주위 500m 이내에서 리뷰를 쓰시면 더 뜨거운 리뷰 등급을 받으실 수 있습니다.";
     }
-	
-    
 }
 //--------------------------------------------------------------------------------------------------------------    
    
@@ -189,9 +172,3 @@ function getCurrentPosBtn(){
 
 //--------------------------------------------------------------------------------------------------------------
 
-
-	</script>
-
-
-</body>
-</html>

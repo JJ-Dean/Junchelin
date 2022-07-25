@@ -1,0 +1,56 @@
+/*음식점 정보*/
+#restaurantDetail {
+  text-align: left;
+  font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+.retaurantDetailWarp {
+  height: 42rem;
+  display: flex;
+  font: 600 2rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+
+/*리뷰 정렬*/
+.sortControl option {
+  background: var(--baseColor);
+  color: #fff;
+  padding: 3px 0;
+font-size: 16px;
+}
+
+.sortWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sort {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  border-radius: 4px;
+  border: .2rem solid var(--baseColor);
+}
+
+.sort .sortControl {
+  width: inherit;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3;
+  margin-left: auto;
+}
+
+.categoryName {
+  text-align: left;
+}
+.categoryName span {
+  font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+
+.txt {
+}
