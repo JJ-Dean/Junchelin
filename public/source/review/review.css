@@ -1,0 +1,58 @@
+/*리뷰쓰기 Top*/
+.preView {
+  font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
+  display: flex;
+}
+
+.mapView {
+  text-align: left;
+  height: 42rem;
+  display: flex;
+  font: 600 2rem/5rem 'Noto Sans KR', sans-serif;	
+  display: flex;
+}
+
+.statusView {
+  margin-left: 5rem;
+}
+
+/*위치 새로고침, 온도 확인, 리뷰 등록 버튼*/
+#getMyPositionBtn, #checkTemperBtn{
+  padding: .1rem 1rem;
+  color: ghostwhite;
+  font-size: 1.5rem;
+  background-color: #f49014;
+  border-radius: 2rem;
+  display:inline-block;
+  cursor: pointer;
+  margin-bottom: .5rem;
+}
+
+#uploadBtn{
+  padding: 1rem 1rem;
+  color: ghostwhite;
+  font-size: 1.5rem;
+  background-color: #f49014;
+  border-radius: 2rem;
+  display:inline-block;
+  cursor: pointer;
+  margin-bottom: .5rem;
+}
+
+.titleWrap, .tempTitleWrap, .revWriteWrap {
+  text-align: left;
+}
+
+.titleWrap #revTitle,
+.tempTitleWrap #revTempTitle {
+  font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+.revWrap {
+  
+}
+
+.revWriteWrap {
+  margin: 0 auto;
+  width: 100rem;
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+    <link rel="stylesheet" href="source/detail/detail.css">
+    <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./headerAndFooter/header.css">
+    <link rel="stylesheet" href="./headerAndFooter/footer.css">
+</head>
+<body>  <!--include-html="./hf/header.html" -->
+    <header><!--include-html="./hf/header.html" -->
+        <h1 class="logo">
+            <a href="index.html">
+                <img src="./source/image/logo.svg" alt="Logo">
+            </a>
+        </h1>
+        <nav id="nav">
+            <ul class="nav_left">
+                <li><a href="#">찜 목록</a></li>
+                <li><a href="#">내 리뷰</a></li>
+                <li><a href="upload.html">맛집 추가</a></li>
+            </ul>
+            <ul class="nav_right">
+                <li id="li_left"><a href="signIn.html">Sign in</a></li>
+                <li style="font-size: 3rem;">|</li>
+                <li id="li_right"><a href="SignUp.html">Sign up</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <section>
+        <h1 id="restaurantDetail">음식점 정보</h1>
+        <div class="retaurantDetailWarp">
+            <div class="imgWrap" id="img">
+
+            </div>
+            <div class="restaurantInfo">
+                <div class="retaurantName">
+                    <span>이름 : </span> <span id="resName"></span>
+                </div>
+                <div class="retaurantCate">
+                    <span>카테고리 : </span> <span id="resCate"></span>
+                </div>
+                <div class="retaurantLocation">
+                    <span>위치 : </span> <span id="resLoca"></span>
+                </div>
+                <div class="retaurantHottest">
+                    <span>평균 리뷰 온도 : </span> <span id="resHot">80℃</span>
+                </div>
+                <div id="goReveiw">
+                    
+                </div>
+            </div>
+            <div class="wishBtn">
+                <button>찜하기</button>
+            </div>
+        </div>
+    </section>
+    <br><hr><br>
+
+    <section>
+        <div id="categoryWrap">
+            <div class="category">
+                <div class="categoryName">
+                    <span>리뷰</span>
+                </div>
+                <div class="sortWrap">
+                    <div class="sort">
+                        <select class="sortControl">
+                            <option value="recent">최신순</option>
+                            <option value="old">오래된 순</option>
+                            <option value="Hot">뜨거운 순</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+    <section>
+        <div id="reviewWrap">
+            
+
+        </div>
+            
+    </section>
+                
+    <footer>
+        footer
+        <span>contact : yjj052800@gmail.com</span>
+    </footer>
+
+     <!-- firebase -->
+     <!-- update the version number as needed -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+     <script>
+
+        const firebaseConfig = {
+             apiKey: "AIzaSyAdjgE4UD7KMZms6-1vxEenRf-kvv6PQRs",
+             authDomain: "junchelin-2029b.firebaseapp.com",
+             projectId: "junchelin-2029b",
+             storageBucket: "junchelin-2029b.appspot.com",
+             messagingSenderId: "687790285758",
+             appId: "1:687790285758:web:982f1ee156909249de4fef",
+             measurementId: "G-7YXNC9Q0SZ"
+         };
+
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+     </script>
+
+     <script>
+        //firebase db, storage 호출해서 변수에 저장
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        //쿼리스트링으로 저장한 id값을 가져옴
+        //쿼리스티링 (?id=~~) 값을 오브젝트 형식으로 반환해줌
+        let urlQuery = new URLSearchParams(window.location.search);
+        console.log(urlQuery.get('id'));
+
+        db.collection('product').doc(urlQuery.get('id')).get().then((result)=>{
+            //detail
+            const name = document.getElementById('resName');
+            const loca = document.getElementById('resLoca');
+            const cate = document.getElementById('resCate');
+            const element = document.querySelector('#goReveiw');
+            const element2 = document.querySelector('#img');
+            //음식점 이미지 로드
+            console.log(result.id);
+            console.log(result.data().위치);
+            
+            let template = `<a href="review.html?id=${result.id}">리뷰 쓰기</a>`;
+            let template2 = `<img src=${result.data().이미지} />`;
+            img.innerHTML=``;
+            name.innerHTML=`${result.data().음식점이름}`;
+            loca.innerHTML=`${result.data().위치}`;
+            cate.innerHTML=`${result.data().카테고리}`;
+            element.insertAdjacentHTML('beforeend', template);
+            element2.insertAdjacentHTML('beforeend', template2);
+        });
+        
+        //리뷰
+        db.collection('Review').get().then((result)=>{
+            result.forEach((doc)=>{
+                if (doc.data().음식점ID == urlQuery.get('id')){
+                    console.log(doc.data());
+                let element = document.querySelector('#reviewWrap');
+                let template = `
+                                    <div class="cardWrap">
+                                        <div class="card">
+                                            
+                                            <div class="reviewProfile">
+                                                <span>${doc.data().nickName}</span><br>
+                                                <div class="temperWrap">
+                                                <span>리뷰 온도 : </span><span>${doc.data().온도}</span><span>℃</span>
+                                                </div>
+                                            </div>
+                                            <div class="review">
+                                                <div class="txt short">
+                                                    ${doc.data().content}
+                                                </div>
+                                            </div>
+                                                <div class="moreBtn">더보기</div>
+                                        </div>
+                                    </div>
+                                `;
+                element.insertAdjacentHTML('beforeend', template);
+
+                }
+
+                let cardMore = document.querySelectorAll('.cardWrap');
+                console.log(cardMore);
+                cardMore.forEach((v)=>{
+                    console.log(v)
+                    v.querySelector('.moreBtn').addEventListener('click',(e)=>{
+                        e.preventDefault();
+                        console.log(Boolean(v.querySelector('.txt').classList.contains('short')));
+                        if (v.querySelector('.txt').classList.contains('short')){
+                            v.querySelector('.txt').classList.remove('short'); }
+                        // } else {
+                        //     v.querySelector('.txt').classList.add('short');
+                        // };
+                        
+
+                    })
+                });
+                
+                    // const btnMore = document.querySelector('.moreBtn');
+                    // const moreTxt = document.querySelectorAll('.txt');
+                    // btnMore.addEventListener("click",readMore);
+                    // function readMore() {
+                    //     moreTxt.classList.add('short');
+                    // }
+                
+
+
+
+            })
+        })
+
+
+
+     </script>
+     <script>
+       
+        
+    </script>
+     <script src="./headerAndFooter/header.js"></script>
+</body>
+</html>

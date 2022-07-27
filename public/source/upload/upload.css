@@ -1,0 +1,22 @@
+.titleWrap{
+    width: 100rem;
+}
+.uploadTitle{
+    text-align: left;
+    font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+.container > .inputWrap > .inputTitle {
+    font: 700 2rem/5rem 'Noto Sans KR', sans-serif;	
+}
+
+#uploadBtn{
+    font: 500 2rem/5rem 'Noto Sans KR', sans-serif;	
+    padding: .01rem 1rem;
+    color: ghostwhite;
+    font-size: 1.5rem;
+    background-color: #f49014;
+    border-radius: 2rem;
+    display:inline-block;
+    cursor: pointer;
+}

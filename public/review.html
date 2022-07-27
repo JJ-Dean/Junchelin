@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review</title>
+    <link rel="stylesheet" href="source/review/review.css">
+    <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./headerAndFooter/header.css">
+    <link rel="stylesheet" href="./headerAndFooter/footer.css">
+</head>
+<body>  <!--include-html="./hf/header.html" -->
+    <header><!--include-html="./hf/header.html" -->
+        <h1 class="logo">
+            <a href="index.html">
+                <img src="./source/image/logo.svg" alt="Logo">
+            </a>
+        </h1>
+        <nav id="nav">
+            <ul class="nav_left">
+                <li><a href="#">찜 목록</a></li>
+                <li><a href="#">내 리뷰</a></li>
+                <li><a href="upload.html">맛집 추가</a></li>
+            </ul>
+            <ul class="nav_right">
+                <li id="li_left"><a href="signIn.html">Sign in</a></li>
+                <li style="font-size: 3rem;">|</li>
+                <li id="li_right"><a href="SignUp.html">Sign up</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    <section>
+        <div class="tempTitleWrap">
+            <span id="revTempTitle">리뷰 온도 체크</span></span>
+
+        </div>
+    </section>
+    <section>
+        <div id="preView">
+            <div class="mapView">
+                <div id="map" style="width: 500px; height: 400px;"></div>
+                
+                <div class="statusView">
+                
+                    <div class="distance">
+                        <span>회원님과 현재 음식점과의 거리는</span> <span id="revMeter"></span> <span>입니다.</span><br>
+                        <span id="review"></span>
+                    </div>
+                    <div class="timeout hidden">
+                        <span>계산을 하고</span> <span id="revTime"></span> <span>지났습니다.</span>
+                    </div>
+                    <div class="temperature">
+                        <span>리뷰 온도 : </span> <span id="revTemp"></span><span>℃ 입니다.</span>
+                    </div>
+                    <div class="btn btn-lg btn-primary" id="getMyPositionBtn">내 위치 새로고침</div>
+                    <div class="statusBtn">
+                        <div id="checkTemperBtn">내 리뷰 온도 확인하기</div>
+                    </div>
+                    <div class="loading">거리 측정 중입니다. 잠시만 기다려주세요.</div>
+                </div>
+
+                
+            </div>
+            
+            
+
+        </div>
+    </section>
+        <br><hr><br>
+
+    <section>
+        <div class="titleWrap">
+            <span id="revTitle">리뷰 쓰기</span> <span class="hidden"><img src="" alt=""></span>
+
+        </div>
+    </section>
+    
+    <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+    <section>
+        
+            <h1 class="hidden">리뷰 온도</h1>
+            <div class="revWrap">
+                <div class="revWriteWrap">
+                    <h1 class="revWrite">리뷰 및 한줄 평</h1><br>
+                    <p><textarea id="revTxt" cols="152" rows="10" placeholder="내용을 입력해주세요." readonly></textarea></p>
+                </div>
+            </div>
+            <div id="uploadBtn">리뷰 등록</div>
+    </section>
+                
+    <footer>
+        footer
+        <span>contact : yjj052800@gmail.com</span>
+    </footer>
+
+    <!-- firebase -->
+     <!-- update the version number as needed -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+     <script>
+        const firebaseConfig = {
+             apiKey: "AIzaSyAdjgE4UD7KMZms6-1vxEenRf-kvv6PQRs",
+             authDomain: "junchelin-2029b.firebaseapp.com",
+             projectId: "junchelin-2029b",
+             storageBucket: "junchelin-2029b.appspot.com",
+             messagingSenderId: "687790285758",
+             appId: "1:687790285758:web:982f1ee156909249de4fef",
+             measurementId: "G-7YXNC9Q0SZ"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+     </script>
+
+     <script>
+        //firebase db, storage 호출해서 변수에 저장
+        const db = firebase.firestore();
+        
+        //db.collection('product').doc().set({}) -> doc()에 이름 지정해서 db에 저장 가능 but 그냥 add를 많이 쓴다. -> 자동으로 고유 id 만들어줌
+
+        const addRes = document.getElementById('uploadBtn');
+        addRes.addEventListener("click", addRestoDB);
+
+        
+
+        function addRestoDB(){
+                    //쿼리스트링으로 저장한 게시물 id 가져옴
+                    let urlQuery = new URLSearchParams(window.location.search);
+
+                    //이름, 카테고리, 위치, 시간 저장
+                    let revTemper = document.getElementById('revTemp').innerText;
+                    console.log(revTemper);
+                    let revTxtArea = document.getElementById('revTxt').value;
+                    var nowDate = new Date();
+                    //입력받은 정보 총합해서 firestore 와 storage 에 저장
+                    let revSave = {
+                        content : revTxtArea,
+                        음식점ID : urlQuery.get('id'),
+                        uid : JSON.parse(localStorage.getItem('user')).uid,
+                        nickName : JSON.parse(localStorage.getItem('user')).displayName,
+                        regdata : nowDate,
+                        온도 : revTemper
+                    }
+                    console.log(revSave);
+
+                    //DB 저장 성공 or 실패
+                    db.collection('Review').add(revSave).then((result)=>{
+                        //성공
+                        console.log(result);
+                        window.location.href="/index.html";
+                    }).catch((error)=>{
+                        //실패
+                        console.log(error);
+                        alert('등록에 실해하였습니다. 다시 입력해주세요.');
+                    })
+
+                };
+                
+
+            
+
+
+     </script>
+     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77107e0134f771816a433ef8bd460a7f"> </script>
+     <script src="./source/review/map.js"></script>
+     <script src="./headerAndFooter/header.js"></script>
+     <script src="./source/review/review.js"></script>
+</body>
+</html>

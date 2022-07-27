@@ -7,7 +7,6 @@ li {
     display: inline-block;
 }
 
-
 /*카테고리*/
 #categoryWrap {
     background-color: lightgray;
@@ -31,8 +30,9 @@ li {
 .categoryDetail {
     text-align: center;
     font: 500 2rem/5rem 'Noto Sans KR', sans-serif;	
-    width: 13rem;
+    width: 50rem;
     height: 5rem;
+    justify-content: space-around;
 }
 
 /*음식점 카드*/
@@ -54,7 +54,7 @@ li {
     width: 40rem;
 }
 
-.card > .imgWrap >img {
+.card > a> .imgWrap >img {
     width: 100%;
     height: 100%;
 }
@@ -62,8 +62,8 @@ li {
 /*카드 Txt*/
 .cardTxt {
     background-color: #F8F8FF;
-    height: 8rem;
-    font: 500 1.7rem/2rem 'Noto Sans KR', sans-serif;	
+    height: 10rem;
+    font: 500 1.4rem/1.6rem 'Noto Sans KR', sans-serif;	
 }
 
 .cardTxt :nth-child(n) {

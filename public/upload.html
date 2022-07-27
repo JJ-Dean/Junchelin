@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집 추가</title>
+    <link rel="stylesheet" href="./source/upload/upload.css">
+    <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./headerAndFooter/header.css">
+    <link rel="stylesheet" href="./headerAndFooter/footer.css">
+</head>
+<body>  
+
+    <header><!--include-html="./hf/header.html" -->
+        <h1 class="logo">
+            <a href="index.html">
+                <img src="./source/image/logo.svg" alt="Logo">
+            </a>
+        </h1>
+        <nav id="nav">
+            <ul class="nav_left">
+                <li><a href="#">찜 목록</a></li>
+                <li><a href="#">내 리뷰</a></li>
+                <li><a href="upload.html">맛집 추가</a></li>
+            </ul>
+            <ul class="nav_right">
+                <li id="li_left"><a href="signIn.html">Sign in</a></li>
+                <li style="font-size: 3rem;">|</li>
+                <li id="li_right"><a href="SignUp.html">Sign up</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <section class="titleWrap">
+        <h1 class="uploadTitle">맛집 추가</h1>
+    </section>
+    
+    <br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+    <section>
+        <div class="container uploadCon">
+            <div class="inputWrap">
+                <span class="inputTitle">음식점 이름</span><br>
+                <input type="text" class="form-control" id="resName" placeholder="음식점 이름"><br>
+            </div>
+            <div class="inputWrap">
+                <span class="inputTitle">카테고리</span><br>
+                <div class="sortWrap">
+                    <div class="sort">
+                        <select class="form-control" id="resCate">
+                            <option value="한식">한식</option>
+                            <option value="일식">일식</option>
+                            <option value="양식">양식</option>
+                            <option value="중식">중식</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <br>
+            <!-- 위치 -->
+            <div class="row border-top p-3" style="align-items: center;">
+                <div class="col-2"><h1><strong>주소 <span style="color:red;">*</span></strong></h1></div>
+                <div class="col-auto">
+                    <input type="hidden" name="place" id="resLoca">
+                    <input type="text" size="40" name="address" id="address" class="essential">
+                    <input type="hidden" name="lat" id="resLng">
+                    <input type="hidden" name="lng" id="resLat">
+                </div><br>
+                <div id="map" style="width:300px;height:300px;margin-top:10px; margin: auto;"></div>
+            </div>
+            <br>
+            <div class="inputWrap" >
+                <span class="inputTitle">사진 첨부</span><br>
+                <input type="file" class="form-control" id="resImg" style="border-style: solid;">
+            </div>
+            <br>
+            <div class="btn" id="uploadBtn">올리기!</div>
+        </div>
+    </section>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        footer
+        <span>contact : yjj052800@gmail.com</span>
+    </footer>
+    <script src="./source/main/banner/banner.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77107e0134f771816a433ef8bd460a7f&libraries=services"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+        //지도를 미리 생성
+        var map = new daum.maps.Map(mapContainer, mapOption);
+        //주소-좌표 변환 객체를 생성
+        var geocoder = new daum.maps.services.Geocoder();
+        //마커를 미리 생성
+        var marker = new daum.maps.Marker({
+            position: new daum.maps.LatLng(37.537187, 127.005476),
+            map: map
+        });
+
+        var geocoder = new kakao.maps.services.Geocoder();
+        let address = document.querySelector('#address');
+        address.addEventListener("click", find_address) 
+        
+        function find_address(){    
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = data.address; // 최종 주소 변수
+                    document.getElementById("address").value =addr;
+                    // 주소로 상세 정보를 검색
+                    geocoder.addressSearch(data.address, function(results, status) {
+                        // 정상적으로 검색이 완료됐으면
+                        if (status === daum.maps.services.Status.OK) {
+
+                            var result = results[0]; //첫번째 결과의 값을 활용
+
+                            // 해당 주소에 대한 좌표를 받아서
+                            var coords = new daum.maps.LatLng(result.y, result.x);
+                            // 지도를 보여준다.
+                            mapContainer.style.display = "block";
+                            map.relayout();
+                            // 지도 중심을 변경한다.
+                            map.setCenter(coords);
+                            // 마커를 결과값으로 받은 위치로 옮긴다.
+                            marker.setPosition(coords)
+                        }
+                    });
+                    console.log(data.address);
+                    document.getElementById("address").readOnly = true;
+                    document.querySelector("input[name=place]").value =data.address;
+                    var juso =  document.getElementById("address").value;
+                    geocoder.addressSearch(juso, callback);
+                }
+            }).open()
+        };
+
+        var callback = function(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                document.querySelector("input[name='lng']").value = result[0].x;
+                document.querySelector("input[name='lat']").value = result[0].y;
+            }
+        };
+
+
+        
+    </script>
+    
+
+    <!-- firebase -->
+     <!-- update the version number as needed -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+     <script>
+        const firebaseConfig = {
+             apiKey: "AIzaSyAdjgE4UD7KMZms6-1vxEenRf-kvv6PQRs",
+             authDomain: "junchelin-2029b.firebaseapp.com",
+             projectId: "junchelin-2029b",
+             storageBucket: "junchelin-2029b.appspot.com",
+             messagingSenderId: "687790285758",
+             appId: "1:687790285758:web:982f1ee156909249de4fef",
+             measurementId: "G-7YXNC9Q0SZ"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+     </script>
+
+     <script>
+        //firebase db, storage 호출해서 변수에 저장
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        
+        //db.collection('product').doc().set({}) -> doc()에 이름 지정해서 db에 저장 가능 but 그냥 add를 많이 쓴다.
+
+        const addRes = document.getElementById('uploadBtn');
+
+        addRes.addEventListener("click", addRestoDB);
+
+        function addRestoDB(){
+
+            //이미지 업로드
+            //이미지 파일 저장
+            let file = document.querySelector('#resImg').files[0];
+            //저장 경로 설정
+            const storageRef = storage.ref();
+            const saveRoute = storageRef.child('resImage/' + file.name);
+            const 업로드작업 = saveRoute.put(file);
+            //이미지 업로드 성공 or 실패
+            업로드작업.on( 'state_changed', 
+                // 변화시 동작하는 함수 
+                null, 
+                //에러시 동작하는 함수
+                (error) => {
+                console.error('실패사유는', error);
+                }, 
+                // 성공시 동작하는 함수
+                () => {
+                업로드작업.snapshot.ref.getDownloadURL().then((url) => { //성공 시 업로드된 이미지 주소 가져올 수 있음
+                    console.log('업로드된 경로는', url);
+
+                    //이름, 카테고리, 위치, 시간 저장
+                    let resName = document.querySelector('#resName').value;
+                    let resCateValue = document.getElementById('resCate');
+                    let resCate = resCateValue.options[resCateValue.selectedIndex].value;
+                    console.log(resCate);
+                    let resLoca = document.querySelector('#resLoca').value;
+                    let resLng = document.querySelector('#resLng').value;
+                    let resLat = document.querySelector('#resLat').value;
+                    var nowDate = new Date();
+                    //입력받은 정보 총합해서 firestore 와 storage 에 저장
+                    let resSave = {
+                        음식점이름 : resName,
+                        카테고리 : resCate,
+                        위치 : resLoca,
+                        이미지 : url,
+                        regdata : nowDate,
+                        위도 : resLng,
+                        경도 : resLat,
+                        uid : JSON.parse(localStorage.getItem('user')).uid,
+                        nickName : JSON.parse(localStorage.getItem('user')).displayName,
+                    }
+                    console.log(resSave);
+
+                    //DB 저장 성공 or 실패
+                    db.collection('product').add(resSave).then((result)=>{
+                        //성공
+                        console.log(result);
+                        window.location.href="/index.html";
+                    }).catch((error)=>{
+                        //실패
+                        console.log(error);
+                        alert('등록에 실해하였습니다. 다시 입력해주세요.');
+                    })
+
+                });
+                }
+            );
+
+            
+        }
+
+
+     </script>
+     <script src="./headerAndFooter/header.js"></script>
+</body>
+</html>

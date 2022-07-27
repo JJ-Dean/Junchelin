@@ -43,13 +43,24 @@ nav {
     margin-right: 10rem;
 }
 
+.nav_right #li_right #logoutBtn{
+    font: 500 2rem/5rem 'Noto Sans KR', sans-serif;	
+    padding: .01rem 1rem;
+    color: ghostwhite;
+    font-size: 1.5rem;
+    background-color: #f49014;
+    border-radius: 2rem;
+    display:inline-block;
+    cursor: pointer;
+
+}
+
 header nav ul { 
     text-align: center;
 }
 
 header nav ul li {
     padding: 0 1rem;
-    width: 10rem;
 }
 
 header nav ul li a { 
