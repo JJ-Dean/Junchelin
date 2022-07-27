@@ -4,12 +4,29 @@
     font: 700 3rem/5rem 'Noto Sans KR', sans-serif;	
 }
 
-.retaurantDetailWarp {
+.restaurantDetailWarp {
     height: 42rem;
     display: flex;
     font: 600 2rem/5rem 'Noto Sans KR', sans-serif;	
 }
+.restaurantInfo {
+  margin-left: 5rem;
+  text-align: left;
+  height: 42rem;
+  font: 600 2rem/5rem 'Noto Sans KR', sans-serif;	
+}
 
+/*리뷰 쓰러가기 버튼*/
+#revBtn{
+  font: 500 2rem/5rem 'Noto Sans KR', sans-serif;	
+    padding: .01rem 1rem;
+    color: ghostwhite;
+    font-size: 1.5rem;
+    background-color: #f49014;
+    border-radius: 2rem;
+    display:inline-block;
+    cursor: pointer;
+}
 
 /*리뷰 정렬*/
 .sortControl option {

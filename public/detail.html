@@ -34,7 +34,7 @@
     
     <section>
         <h1 id="restaurantDetail">음식점 정보</h1>
-        <div class="retaurantDetailWarp">
+        <div class="restaurantDetailWarp">
             <div class="imgWrap" id="img">
 
             </div>
@@ -55,7 +55,7 @@
                     
                 </div>
             </div>
-            <div class="wishBtn">
+            <div class="wishBtn hidden">
                 <button>찜하기</button>
             </div>
         </div>
@@ -140,7 +140,7 @@
             console.log(result.id);
             console.log(result.data().위치);
             
-            let template = `<a href="review.html?id=${result.id}">리뷰 쓰기</a>`;
+            let template = `<a id="revBtn" href="review.html?id=${result.id}">리뷰 쓰기</a>`;
             let template2 = `<img src=${result.data().이미지} />`;
             img.innerHTML=``;
             name.innerHTML=`${result.data().음식점이름}`;
