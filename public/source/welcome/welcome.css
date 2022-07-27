@@ -70,19 +70,24 @@ div>#catchp>span:nth-child(4) {
 	font: 500 4rem/7.5rem 'Noto Sans KR', sans-serif;
 }
 #text2 {
-	color: red;
+	color: white;
 	font: 900 7.5rem/4rem 'Noto Sans KR', sans-serif;
-	text-shadow: -5px 0 white, 0 5px white, 5px 0 white, 0 -5px white;
 
 }
 
 #enterbt {
 	position: absolute;
-	top: 70rem;
+	top: 58rem;
 	margin-left: 8rem;
 	font-size: 4rem;
 }
 a {
-	font: 500 4rem/7.5rem 'Noto Sans KR', sans-serif;
-	color:#000;
+	font: 500 3rem/5rem 'Noto Sans KR', sans-serif;	
+    padding: .01rem 1rem;
+    color: ghostwhite;
+    font-size: 1.5rem;
+    background-color: #f49014;
+    border-radius: 2rem;
+    display:inline-block;
+    cursor: pointer;
 }
