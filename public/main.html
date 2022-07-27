@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" href="./source/main/main.css">
+    <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./headerAndFooter/header.css">
+    <link rel="stylesheet" href="./headerAndFooter/footer.css">
+    <link rel="stylesheet" href="./source/main/banner/banner.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+</head>
+<body>  
+
+    <header><!--include-html="./hf/header.html" -->
+        <h1 class="logo">
+            <a href="main.html">
+                <img src="./source/image/logo.svg" alt="Logo">
+            </a>
+        </h1>
+        <nav id="nav">
+            <ul class="nav_left">
+                <li><a href="#">찜 목록</a></li>
+                <li><a href="#">내 리뷰</a></li>
+                <li><a href="upload.html">맛집 추가</a></li>
+            </ul>
+            <ul class="nav_right">
+                <li id="li_left"><a href="signIn.html">Sign in</a></li>
+                <li style="font-size: 3rem;">|</li>
+                <li id="li_right"><a href="SignUp.html">Sign up</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <section>
+        <div class="swiper swiper1" id="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><a href="#"><img src="./source/image/kfood.jpg" alt="한식"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="./source/image/jfood.jpg" alt="일식"></a></div>
+                <div class="swiper-slide"><a href="#"><img src="./source/image/wfood.jpg" alt="양식"></a></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination sp1"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev sbp1"></div>
+            <div class="swiper-button-next sbn1"></div>
+        </div>
+    </section>
+    <br><hr><br>
+
+    <section>
+        <div id="categoryWrap">
+            <div class="category">
+                <div class="categoryName">
+                    <span>종류</span>
+                </div>
+                <div class="categoryDetail">
+                    <input type="radio" name="한식" value="한식"> <label for="한식"><span class="cateTxt">한식</span></label>
+                    <input type="radio" name="일식" value="일식"> <label for="일식"><span class="cateTxt">일식</span></label>
+                    <input type="radio" name="양식" value="양식"> <label for="양식"><span class="cateTxt">양식</span></label>
+                    <input type="radio" name="중식" value="중식"> <label for="중식"><span class="cateTxt">중식</span></label>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
+    <section>
+        <div id="cardWrap">
+            
+
+        
+        </div>
+    </section>
+                
+    <footer>
+        footer
+        <span>contact : yjj052800@gmail.com</span>
+    </footer>
+    <script src="./source/main/banner/banner.js"></script>
+
+    <!-- firebase -->
+     <!-- update the version number as needed -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+     <script>
+
+
+        const firebaseConfig = {
+             apiKey: "AIzaSyAdjgE4UD7KMZms6-1vxEenRf-kvv6PQRs",
+             authDomain: "junchelin-2029b.firebaseapp.com",
+             projectId: "junchelin-2029b",
+             storageBucket: "junchelin-2029b.appspot.com",
+             messagingSenderId: "687790285758",
+             appId: "1:687790285758:web:982f1ee156909249de4fef",
+             measurementId: "G-7YXNC9Q0SZ"
+         };
+
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+     </script>
+     <script>
+        //firebase db 호출해서 변수에 저장
+        const db = firebase.firestore();
+        
+        //collection(컬렉션이름)
+        //.get -> collection 안에 있는 문서들 전부 가져옴
+        //.then -> 준비가 모두 완료되고나서 안에 있는 코드를 실행해라.
+        db.collection('product').get().then((result)=>{
+            result.forEach((doc)=>{
+                console.log(doc.data());
+                let element = document.querySelector('#cardWrap');
+                let template = `
+                                <div class="card">
+                                    <a href="/detail.html?id=${doc.id}">
+                                    <div class="imgWrap">
+                                        <img src="${doc.data().이미지}">
+                                    </div>
+                                    <div class="cardTxt">
+                                        <div class="cardName">
+                                            <span>이름 : </span> <span>${doc.data().음식점이름}</span>
+                                        </div>
+                                        <div class="cardCategory">
+                                            <span>카테고리 :</span><span>${doc.data().카테고리}</span>
+                                        </div>
+                                        <div class="cardLocation">
+                                            <span>위치 : </span> <span>${doc.data().위치}</span>
+                                        </div>
+                                        <div class="cardHottest hidden">
+                                            <span>평균 리뷰 온도 : </span> <span>${doc.data().뜨거운온도}℃</span>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                                `;
+                element.insertAdjacentHTML('beforeend', template);
+            })
+        })
+
+
+     </script>
+     <script src="./headerAndFooter/header.js"></script>
+</body>
+</html>

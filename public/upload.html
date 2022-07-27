@@ -14,7 +14,7 @@
 
     <header><!--include-html="./hf/header.html" -->
         <h1 class="logo">
-            <a href="index.html">
+            <a href="main.html">
                 <img src="./source/image/logo.svg" alt="Logo">
             </a>
         </h1>
@@ -234,7 +234,7 @@
                     db.collection('product').add(resSave).then((result)=>{
                         //성공
                         console.log(result);
-                        window.location.href="/index.html";
+                        window.location.href="/main.html";
                     }).catch((error)=>{
                         //실패
                         console.log(error);
