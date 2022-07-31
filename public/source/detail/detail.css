@@ -141,3 +141,8 @@
 
   .txt {
   }
+
+  .imgWrap > img {
+    width: 64rem;
+    height: 42rem;
+  }

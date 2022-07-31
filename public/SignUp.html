@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>맛집 추가</title>
+    <title>회원가입</title>
     <link rel="stylesheet" href="./source/main/upload.css">
     <link rel="stylesheet" href="./source/reset.css">
+    <link rel="stylesheet" href="./source/SignUp/signUp.css">
     <link rel="stylesheet" href="./headerAndFooter/header.css">
     <link rel="stylesheet" href="./headerAndFooter/footer.css">
 </head>
@@ -25,29 +26,32 @@
                 <li><a href="upload.html">맛집 추가</a></li>
             </ul>
             <ul class="nav_right">
-                <li id="li_left"><a href="signIn.html">Sign in</a></li>
+                <li id="li_left"><a href="signIn.html">로그인</a></li>
                 <li style="font-size: 3rem;">|</li>
-                <li id="li_right"><a href="SignUp.html">Sign up</a></li>
+                <li id="li_right"><a href="SignUp.html">회원가입</a></li>
             </ul>
         </nav>
         
     </header>
 
     <section>
-        <h1 class="uploadTitle">맛집 추가</h1>
+        <h1 class="signUpTitle">회원가입</h1>
     </section>
     
     <br><br><br><br><hr style="height: 1rem; width: 100rem; margin: 0 auto; background-color: #FFA629; border: 0; border-radius: 1rem; margin-bottom: 4rem;">
     
     <section>
         <div class="container SignUpCon">
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="name" id="name-new">
+            <span class="mb-3">이름(닉네임)</span> 
+            <div>
+               <input type="text" class="form-control" placeholder="name" id="name-new">
             </div>
-            <div class="mb-3">
-                <input type="email" class="form-control" placeholder="email" id="email-new">
+            <span class="mb-3">이메일(ID)</span>
+            <div>
+               <input type="email" class="form-control" placeholder="email" id="email-new">
             </div>
-            <div class="mb-3">
+            <span class="mb-3">패스워드</span> <span>6글자 이상 입력해주세요.</span>
+            <div>
                 <input type="password" class="form-control" placeholder="pw" id="pw-new">
             </div>
             <button type="submit" class="btn btn-primary" id="signUpBtn">가입하기</button>

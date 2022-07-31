@@ -72,11 +72,11 @@
 			
 			// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 			// marker.setMap(null);     
-			//--------------------------------------------------------------------------------------------------------------
-			//gps 정보 받아와서 내 위치에 마커 표시하기
-			
-			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-			if (navigator.geolocation) {
+	//--------------------------------------------------------------------------------------------------------------
+	//gps 정보 받아와서 내 위치에 마커 표시하기
+	
+	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+	if (navigator.geolocation) {
            
     
     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -146,7 +146,7 @@ function displayMarker(locPosition, message) {
        map: map, // 선을 표시할 지도입니다 
        path : linePath,
        strokeWeight: 3, // 선의 두께입니다 
-       strokeColor: '#db4040', // 선의 색깔입니다
+       strokeColor: '#f49014', // 선의 색깔입니다
        strokeOpacity: 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
        strokeStyle: 'solid' // 선의 스타일입니다
    });
@@ -173,7 +173,7 @@ function displayMarker(locPosition, message) {
 		}
 	}
 
-	//로딩 완료
+	//로딩 완료 후 처리
 	const checkLoad = document.querySelector('.loading');
 		console.log(Boolean(checkLoad));
 		if (checkLoad){
