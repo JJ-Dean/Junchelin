@@ -1,6 +1,9 @@
 # Junchelin
 
 맛집 리뷰 등록 사이트 '열기' 프로젝트 입니다.
+  - 기술 스택 
+    - 프론트 : HTML, CSS, JavaScript
+    - 백 : Google firebase
 
 호스팅 주소 : https://junchelin-2029b.web.app
   - 크롬 브라우저로 접속하면 원활한 환경에서 사용 가능합니다.
